@@ -62,7 +62,12 @@ export default function Home() {
             {/* Social links  */}
             <div className="flex  justify-center lg:justify-start py-3 gap-2">
               <div className="flex lg:gap-4 gap-2">
-                {socialLinks.map((social) => {
+                { showSocial ? socialLinks.map( ( social) =>
+                {
+                  if ( social.id > 5 )
+                  {
+                    return
+                  }
                   return (
                     <a
                       key={social.name}
@@ -73,13 +78,27 @@ export default function Home() {
                       {<social.name />}
                     </a>
                   );
-                })}
+                } ) : 
+                socialLinks.map((social) => {
+                  return (
+                    <a
+                      key={social.id}
+                      title={social.caption}
+                      className="hover:primary_yellow duration-300 ease-in text-red lg:text-[24px] text-[20px]"
+                      href={social.url}
+                    >
+                      {<social.name />}
+                    </a>
+                  );
+                } ) 
+                
+                }
               </div>
               <button
                 className="hover:primary_yellow secondary_black font-light"
                 onClick={() => setShowSocial(!showSocial)}
               >
-                {showSocial ? "- less" : "+ more"}
+                {showSocial ? "+ more" : "- less"}
               </button>
             </div>
             {/* my resume  */}
