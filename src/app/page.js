@@ -33,9 +33,9 @@ export default function Home() {
           {/* content box parent */}
           <div>
             {/* title box */}
-            <div className="flex text-3xl justify-center lg:justify-start font-bold  gap-2">
-              <h2 className="capitalize primary_black  ">{firstName} </h2>
-              <h2 className="capitalize primary_yellow ">{lastName}</h2>
+            <div className="flex text-3xl lg:text-4xl text-sky-500 justify-center lg:justify-start font-bold  gap-2">
+              <h1 className="capitalize primary_black  ">{firstName} </h1>
+              <h1 className="capitalize primary_yellow ">{lastName}</h1>
             </div>
             <h4 className="secondary_black flex justify-center lg:justify-start  py-2 ">
               {position}
