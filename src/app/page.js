@@ -37,7 +37,7 @@ export default function Home() {
               <h1 className="capitalize primary_black  ">{firstName} </h1>
               <h1 className="capitalize primary_yellow ">{lastName}</h1>
             </div>
-            <h4 className="secondary_black flex justify-center lg:justify-start  py-2 ">
+            <h4 className="secondary text-xl flex justify-center lg:justify-start  py-2 ">
               {position}
             </h4>
             <h4 className="secondary_black flex justify-center lg:justify-start py-2">
