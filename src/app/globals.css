@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg_gradient {
+  background-color: hsla(234, 86%, 3%, 1);
+  color: white;
+  background-image: radial-gradient(
+      at 0% 100%,
+      hsla(360, 58%, 2%, 1) 0px,
+      transparent 50%
+    ),
+    radial-gradient(at 80% 100%, hsla(202, 87%, 34%, 1) 0px, transparent 50%),
+    radial-gradient(at 0% 0%, hsla(302, 56%, 28%, 0.72) 0px, transparent 50%);
+  min-height: 100vh;
+}
