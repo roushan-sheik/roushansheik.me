@@ -23,7 +23,7 @@ export default function Home() {
           {/* profile image box */}
           <div className="flex justify-center lg:justify-start ">
             <Image
-              className={`rounded-full w-[260px] h-[260px] ring-4 lg:ring-6 ring-white`}
+              className={`rounded-full w-[260px] h-[260px] ring-4 shadow-2xl shadow-[#ffffff7d] lg:ring-6 ring-[#00a6fb]`}
               src={avatar.srcPath}
               width={200}
               height={200}
