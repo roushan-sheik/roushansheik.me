@@ -22,6 +22,7 @@ Products means Web Apps, AI tools, Softwares, Games, Mobile Apps etc.`,
       { name: "Firebase" },
       { name: "Tailwind" },
       { name: "ReactJs" },
+      { name: "JWT" },
       { name: "ExpressJs" },
     ],
     gitHubRepo: {
@@ -32,6 +33,33 @@ Products means Web Apps, AI tools, Softwares, Games, Mobile Apps etc.`,
       server: "https://github.com/roushan-sheik/bit-craft-backend",
     },
     achievements: ["responsive", "react", "tailwind"],
+  },
+  {
+    id: "RoushanSheik-Me",
+    name: "roushansheik.me",
+    srcURL: {
+      url: "https://github.com/roushan-sheik/roushansheik.me",
+      client: "https://github.com/roushan-sheik/bit-craft-frontend",
+      server: "https://github.com/roushan-sheik/bit-craft-backend",
+    },
+    liveURL: { url: "https://roushansheik-me.vercel.app/" },
+    cover: {
+      srcPath:
+        "https://res.cloudinary.com/dakrgonvu/image/upload/v1720332989/roushansheik-me_ya2mdp.png",
+    },
+    startDate: "2023-04-06",
+    summary: [
+      `roushansheik.me It's My Portfolio application. I have develop it for my won, and I am continue updating my application.`,
+    ],
+    tags: [{ name: "NextJs" }, { name: "Tailwind" }],
+    gitHubRepo: {
+      owner: "roushan-sheik",
+      icon: FaGithub,
+      repo: "https://github.com/roushan-sheik/bit-craft-frontend",
+      client: "https://github.com/roushan-sheik/bit-craft-frontend",
+      server: "https://github.com/roushan-sheik/bit-craft-backend",
+    },
+    achievements: ["responsive", "next js", "tailwind"],
   },
   {
     id: "cinema-ghor",
@@ -46,7 +74,7 @@ Products means Web Apps, AI tools, Softwares, Games, Mobile Apps etc.`,
       srcPath:
         "https://res.cloudinary.com/dakrgonvu/image/upload/v1720142270/cinema_ghor_u96upz.png",
     },
-    startDate: "2024-06-06",
+    startDate: "2024-05-08",
     summary: [
       "Explore top-rated cinemas near you, offering the latest movies, luxury seating, and advanced audiovisual technology. Book your tickets online for a seamless experience.",
     ],
@@ -54,6 +82,7 @@ Products means Web Apps, AI tools, Softwares, Games, Mobile Apps etc.`,
       { name: "Firebase" },
       { name: "Tailwind" },
       { name: "ReactJs" },
+      { name: "JWT" },
       { name: "ExpressJs" },
     ],
     gitHubRepo: {
@@ -74,7 +103,7 @@ Products means Web Apps, AI tools, Softwares, Games, Mobile Apps etc.`,
       srcPath:
         "https://res.cloudinary.com/dakrgonvu/image/upload/v1720141281/affluence_avenue_n7qh0v.png",
     },
-    startDate: "2024-05-06",
+    startDate: "2024-04-14",
     summary: [
       "Discover unparalleled luxury at our world-class resort. Enjoy exquisite accommodations, gourmet dining, and exceptional amenities in a breathtaking setting. Experience the ultimate in relaxation and indulgence at Affluence Avenue.",
     ],
@@ -95,7 +124,7 @@ Products means Web Apps, AI tools, Softwares, Games, Mobile Apps etc.`,
       srcPath:
         "https://res.cloudinary.com/dakrgonvu/image/upload/v1720141498/book_house_q5uaey.png",
     },
-    startDate: "2024-04-06",
+    startDate: "2024-04-01",
     summary: [
       "Book House: Explore a vast collection of books in our online library. Discover your next favorite read, enjoy personalized recommendations, and access exclusive content. Immerse yourself in the world of literature at Book House.",
     ],
@@ -121,7 +150,7 @@ Products means Web Apps, AI tools, Softwares, Games, Mobile Apps etc.`,
       srcPath:
         "https://res.cloudinary.com/dakrgonvu/image/upload/v1720141550/recipe_oei3pw.png",
     },
-    startDate: "2024-04-06",
+    startDate: "2024-03-24",
     summary: [
       "Recipe Calories: Discover delicious recipes with detailed calorie counts and nutritional information. Whether you're meal planning or tracking your diet, Recipe Calories offers healthy and indulgent options to suit every taste and lifestyle.",
     ],
