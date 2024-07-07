@@ -23,4 +23,4 @@ export const profile = {
   socialLinks,
 };
 export const description =
-  "Hi There, I'm Roushan Sheik, a skilled JavaScript programmer with three years of hands-on experience. I specialize in developing efficient code, with expertise in frameworks like React.js, Next.js, and Express.js for dynamic web applications. Currently, I'm dedicated to backend development, architecting and maintaining server-side components. My passion for web development and commitment to staying updated with the latest technologies make me a valuable asset to any project or team.";
+  "Hi There I'm Roushan Sheik, a proficient JavaScript programmer with three years of hands-on experience in the field. Currently I have finished MERN Stack Development course in Programming Hero. My expertise extends to a wide range of popular frameworks, including Tailwind CSS, React Js, Node Js, Express Js, and Next Js, allowing me to create dynamic and responsive web applications. Currently, I'm applying for a job as a MERN Stack Developer Job. My passion for web development and my commitment to staying updated with the latest technologies make me a valuable asset to any project or team.";

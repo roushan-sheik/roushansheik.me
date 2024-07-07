@@ -40,10 +40,10 @@ export default function Home() {
             <h4 className="secondary text-xl flex justify-center lg:justify-start  py-2 ">
               {position}
             </h4>
-            <h4 className="text-gray-200 flex justify-center lg:justify-start py-2">
+            <h4 className="text-[#d2f0f9] flex justify-center lg:justify-start py-2">
               {summary}
             </h4>
-            <h4 className="text-gray-200 flex justify-center lg:justify-start py-2">
+            <h4 className="text-[#d2f0f9] flex justify-center lg:justify-start py-2">
               {location?.name}
             </h4>
             {/* button box container  */}
@@ -112,7 +112,7 @@ export default function Home() {
         </div>
         {/* bottom Para graph container  */}
         <div>
-          <p className=" text-center text-gray-200 lg:text-left lg:text-base text-[15px]   my-8">
+          <p className=" text-center text-[#edfaff] lg:text-left lg:text-base text-[15px]   my-8">
             {description}
           </p>
         </div>
