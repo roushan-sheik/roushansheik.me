@@ -11,7 +11,7 @@ const Page = () => {
       <div className="project_container">
         <div className="relative">
           <h2 className="lg:text-3xl text_pri text-1xl relative inline-block font-bold uppercase select-none py-8">
-            Projects{" "}
+            Projects
             <span className="absolute text-base counter_glass  border border-white font-light px-2 rounded-full top-3 -right-6">
               {projects.length}
             </span>

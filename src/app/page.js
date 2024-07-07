@@ -1,11 +1,13 @@
 "use client";
 import Btn from "@/components/button/Btn";
+import ParticlesComponent from "@/components/paticles-animation/ParticlesComponent";
 import { description, profile } from "@/data/profile";
 import Image from "next/image";
 import React from "react";
 
 export default function Home() {
   const [showSocial, setShowSocial] = React.useState(false);
+ 
   const {
     firstName,
     lastName,
@@ -18,6 +20,7 @@ export default function Home() {
   } = profile;
   return (
     <main>
+      <ParticlesComponent />
       <div className="main_container_box">
         <div className="flex flex-col lg:flex-row  mt-8  gap-8">
           {/* profile image box */}
