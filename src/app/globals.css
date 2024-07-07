@@ -26,16 +26,26 @@ h1 {
   .primary_black {
     color: #0b090a;
   }
-  .primary {
+  .text_brand_pri {
     color: #00a6fb;
   }
   .bg_pri {
     background: #00a6fb;
   }
-  .secondary {
-    color: #5abaea;
+
+  .text_pri {
+    color: #ffffff;
   }
-  .secondary_black {
-    color: #4a5560;
+  .text_sec {
+    color: #eaf4fc;
   }
+}
+/* card related styles  */
+.card_glass {
+  background: rgba(255, 255, 255, 0);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
