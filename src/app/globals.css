@@ -15,27 +15,26 @@
   min-height: 100vh;
 }
 /* gradient style for text  */
- h1 {
- 
-  font-family: Arial, Helvetica, sans-serif; 
-            background: linear-gradient(to right, #f93d9e, 
-                     #00b4d8, #00a6fb); 
-            -webkit-text-fill-color: transparent; 
-            -webkit-background-clip: text; 
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to right, #f93d9e, #00b4d8, #00a6fb);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 @layer components {
   .primary_black {
     color: #0b090a;
   }
- .primary{
-   color: #00a6fb;
-
- }
- .secondary{
-   color: #5abaea;
-
- }
+  .primary {
+    color: #00a6fb;
+  }
+  .bg_pri {
+    background: #00a6fb;
+  }
+  .secondary {
+    color: #5abaea;
+  }
   .secondary_black {
-    color: #bdcbd7;
+    color: #4a5560;
   }
 }
