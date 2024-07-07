@@ -18,9 +18,9 @@ const Project = ({ project }) => {
   } = project;
 
   return (
-    <div className="card_glass text_pri p-4 rounded-lg border-2 shadow-[#fc90c8] overflow-hidden border-[#ffffff] shadow-lg">
+    <div className="card_glass text_pri p-4 rounded-lg border-2 shadow-[#fc90c8] overflow-hidden border-[#f8eef3] shadow-lg">
       {/* image-box  */}
-      <div className="h-[250px] overflow-hidden   s  rounded-lg">
+      <div className="h-[250px] overflow-hidden    rounded-lg">
         <a className="z-10" href={liveURL?.url}>
           <Image
             width={400}
@@ -50,7 +50,7 @@ const Project = ({ project }) => {
             return (
               <button
                 key={tag}
-                className="px-2 py-1 text-[14px] bg-[#00a6fb] rounded-md"
+                className="px-2 py-1 text-[14px] techonology_glass rounded-md"
               >
                 {tag.name}
               </button>
@@ -61,7 +61,7 @@ const Project = ({ project }) => {
         <div className="mt-6 flex text_pri items-center justify-between gap-2">
           <a href={gitHubRepo?.repo}>
             <div className="flex items-center gap-1">
-              <FaGithubSquare className="text-3xl text-white cursor-pointer" />
+              <FaGithubSquare className="text-3xl text_pri cursor-pointer" />
               <span>Source Code</span>
             </div>
           </a>

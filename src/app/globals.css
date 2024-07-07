@@ -34,18 +34,35 @@ h1 {
   }
 
   .text_pri {
-    color: #ffffff;
+    color: #fff2f2;
   }
   .text_sec {
-    color: #eaf4fc;
+    color: #f9dfdf;
   }
 }
 /* card related styles  */
 .card_glass {
-  background: rgba(255, 255, 255, 0);
+  background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+/* projects counter bg  */
+.counter_glass {
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.3);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+/* techonology tag bg  */
+.techonology_glass {
+  background: rgba(28, 195, 254, 0);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
 }
