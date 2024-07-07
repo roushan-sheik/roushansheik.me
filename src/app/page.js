@@ -62,7 +62,7 @@ export default function Home() {
             {/* Social links  */}
             <div className="flex  justify-center lg:justify-start py-3 gap-2">
               <div className="flex lg:gap-4 gap-2">
-                {showSocial
+                {!showSocial
                   ? socialLinks.map((social) => {
                       if (social.id > 5) {
                         return;
