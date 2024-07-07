@@ -40,10 +40,10 @@ export default function Home() {
             <h4 className="secondary text-xl flex justify-center lg:justify-start  py-2 ">
               {position}
             </h4>
-            <h4 className="secondary_black flex justify-center lg:justify-start py-2">
+            <h4 className="text-gray-300 flex justify-center lg:justify-start py-2">
               {summary}
             </h4>
-            <h4 className="secondary_black flex justify-center lg:justify-start py-2">
+            <h4 className="text-gray-300 flex justify-center lg:justify-start py-2">
               {location?.name}
             </h4>
             {/* button box container  */}

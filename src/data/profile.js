@@ -12,7 +12,7 @@ export const profile = {
     caption: "Roushan Sheik",
   },
   location: {
-    name: "Amsterdam, The Netherlands • from 🇺🇦",
+    name: "Khulna Bangladesh",
   },
   tags: [
     { name: "Full Stack" },
