@@ -47,7 +47,9 @@ const Footer = () => {
         </div>
         {/* right box  */}
         <div className=" flex-1 block">
-          <p className="text-end">All Right resolved Roushan Sheik</p>
+          <p className="text-center lg:text-nowrap lg:text-start text-wrap">
+            Copyright © 2024 Roushan Sheik. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
