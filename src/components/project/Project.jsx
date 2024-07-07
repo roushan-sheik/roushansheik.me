@@ -42,9 +42,11 @@ const Project = ({ project }) => {
           <p>{startDate}</p>
         </div>
         <p className="secondary_black">{summary}</p>
-              {/* tags btn  */ }
-              <h2 className="text-lg font-medium mt-3 text-black">Techonologies</h2>
-        <div className=" flex my-3 gap-2">
+        {/* tags btn  */}
+        <h2 className="text-lg font-medium mt-3 primary_black">
+          Techonologies
+        </h2>
+        <div className=" flex my-3 gap-2 flex-wrap">
           {tags?.map((tag) => {
             return (
               <button
