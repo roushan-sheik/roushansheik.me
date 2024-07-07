@@ -13,6 +13,7 @@
     radial-gradient(at 80% 100%, #0b6ba2 0px, transparent 50%),
     radial-gradient(at 0% 0%, #6f1f6db8 0px, transparent 50%);
   min-height: 100vh;
+  max-width: 1440px;
 }
 /* gradient style for text  */
 h1 {
