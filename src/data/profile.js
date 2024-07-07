@@ -3,7 +3,7 @@ import { socialLinks } from "./socialLinks";
 export const profile = {
   firstName: "ROUSHAN",
   lastName: "SHEIK",
-  position: "Senior Software Engineer ",
+  position: "MERN Stack Developer",
   summary: ["Author of javascript-algorithms repo on GitHub"],
   avatar: {
     // srcPath: 'https://res.cloudinary.com/dakrgonvu/image/upload/v1709822618/profile-500into500_kja8xe.png',

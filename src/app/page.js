@@ -7,7 +7,6 @@ import React from "react";
 
 export default function Home() {
   const [showSocial, setShowSocial] = React.useState(false);
- 
   const {
     firstName,
     lastName,
