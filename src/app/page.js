@@ -95,7 +95,7 @@ export default function Home() {
                 className="text-[#00a6fb] font-light"
                 onClick={() => setShowSocial(!showSocial)}
               >
-                {showSocial ? "+ less" : "- more"}
+                {showSocial ? "- less" : "+ more"}
               </button>
             </div>
             {/* my resume  */}
