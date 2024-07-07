@@ -16,6 +16,7 @@ const Project = ({ project }) => {
     gitHubRepo,
     achievements,
   } = project;
+
   return (
     <div className="bg-white p-4 rounded-lg border overflow-hidden border-gray-200 shadow-md">
       {/* image-box  */}

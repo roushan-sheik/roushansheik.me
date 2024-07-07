@@ -1,7 +1,11 @@
+"use client";
 import Project from "@/components/project/Project";
 import { projects } from "@/data/projects";
+import React from "react";
 
-const page = () => {
+const Page = () => {
+  const [showMore, setShowMore] = React.useState(false);
+
   return (
     <div className="min-h-screen">
       <div className="project_container">
@@ -14,13 +18,28 @@ const page = () => {
           </h2>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3  gap-8">
-          {projects.map((project) => (
-            <Project project={project} id={project.id} />
-          ))}
+          {showMore
+            ? projects.map((project) => (
+                <Project project={project} key={project.id} id={project.id} />
+              ))
+            : projects
+                .slice(0, 6)
+                .map((project) => (
+                  <Project project={project} key={project.id} id={project.id} />
+                ))}
+        </div>
+        {/* show more button  */}
+        <div className="flex justify-center my-7">
+          <button
+            onClick={() => setShowMore(!showMore)}
+            className="rounded-lg border-2 border-[#00a6fb] lg:px-8 lg:py-3 px-5 py-2 text-xl text-[#1caff9] duration-200 hover:bg-[#00a6fb] hover:text-white"
+          >
+            {showMore ? "Show Less-" : "Show More+"}
+          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default page;
+export default Page;
