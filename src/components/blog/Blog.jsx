@@ -1,20 +1,23 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { CiCalendar } from "react-icons/ci";
 
 const Blog = ({ blog }) => {
   const { id, title, image, body, date } = blog;
   return (
     <div className=" blog_glass p-6 shadow-xl shadow-white border-2 border-white">
-      <div className="w-full lg:h-[300px] h-[200px]">
-        <Image
-          className="w-full h-full object-cover"
-          src={image}
-          width={700}
-          height={300}
-          alt="Blog"
-        />
-      </div>
+      <Link href={`/blog/${id}`}>
+        <div className="w-full lg:h-[300px] cursor-pointer h-[200px]">
+          <Image
+            className="w-full h-full rounded-md object-cover"
+            src={image}
+            width={700}
+            height={300}
+            alt="Blog"
+          />
+        </div>
+      </Link>
       <div>
         <h2 className={"text-2xl my-3 lg:text-3xl font-semibold text_pri"}>
           {title}
@@ -24,7 +27,9 @@ const Blog = ({ blog }) => {
           <p>{date}</p>
         </div>
         <p className="mt-2 text_sec">{body.slice(0, 250)}</p>
-        <button className=" text_brand_pri">Read More+</button>
+        <Link href={`/blog/${id}`}>
+          <button className=" text_brand_pri">Read More+</button>
+        </Link>
       </div>
     </div>
   );
