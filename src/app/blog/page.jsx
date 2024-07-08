@@ -5,7 +5,7 @@ const page = () => {
   return (
     <div className={"min-h-screen"}>
       <div className="flex justify-center ">
-        <h2 className="lg:text-3xl mb-6 text_pri text-center text-1xl  inline-block font-bold select-none py-8">
+        <h2 className="lg:text-3xl lg:mb-6 text_pri text-center text-2xl  inline-block font-bold select-none py-8">
           Blogs
         </h2>
       </div>
