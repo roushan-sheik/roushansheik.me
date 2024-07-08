@@ -1,4 +1,4 @@
-export const bologs = [
+export const blogs = [
   {
     id: "1",
     title: "The Rise of JavaScript Frameworks in 2024",
@@ -10,7 +10,7 @@ export const bologs = [
     id: "2",
     title: "Understanding the Benefits of Next.js",
     image:
-      "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*phb-XEY1B0fGlAHhjO4Ovg.jpeg",
+      "https://media.licdn.com/dms/image/D4D12AQFEyR2ewFF1Aw/article-cover_image-shrink_720_1280/0/1700570310386?e=2147483647&v=beta&t=zUpEYiM5BBB6jozg-2poa6fSsb8SlzGRi-asRyc0NLM",
     date: "2024-07-05",
     body: "Next.js offers a powerful combination of features that make it a popular choice for server-side rendering and static site generation. With built-in support for SSR, developers can create SEO-friendly applications with ease. Static site generation further enhances performance by pre-rendering pages at build time. Next.js also simplifies routing, provides API routes, and integrates seamlessly with various data sources. Its growing ecosystem, including Vercel for deployment, makes it an attractive option for modern web development. This post delves into these benefits, showcasing why Next.js is becoming a go-to framework for developers.",
   },
