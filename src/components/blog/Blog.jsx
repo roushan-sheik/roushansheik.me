@@ -1,9 +1,9 @@
+"use client";
 import Image from "next/image";
 import { CiCalendar } from "react-icons/ci";
 
 const Blog = ({ blog }) => {
   const { id, title, image, body, date } = blog;
-
   return (
     <div className=" blog_glass p-6 shadow-xl shadow-white border-2 border-white">
       <div className="w-full lg:h-[300px] h-[200px]">
@@ -23,7 +23,8 @@ const Blog = ({ blog }) => {
           <CiCalendar className="text-xl" />
           <p>{date}</p>
         </div>
-        <p className="mt-2 text_sec">{body}</p>
+        <p className="mt-2 text_sec">{body.slice(0, 250)}</p>
+        <button className=" text_brand_pri">Read More+</button>
       </div>
     </div>
   );
