@@ -1,8 +1,8 @@
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { CiCalendar } from "react-icons/ci";
 import { FaGithubSquare } from "react-icons/fa";
 import { FcEnteringHeavenAlive } from "react-icons/fc";
-
 const Project = ({ project }) => {
   const {
     id,
@@ -18,14 +18,24 @@ const Project = ({ project }) => {
   } = project;
 
   return (
-    <div className="card_glass text_pri p-4 rounded-lg border-2 shadow-[#fc90c8] overflow-hidden border-[#f8eef3] shadow-lg">
+    <motion.div
+      className="card_glass text_pri p-4 rounded-lg border-2 shadow-[#fc90c8] overflow-hidden border-[#f8eef3] shadow-lg"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{
+        ease: "linear",
+        duration: 0.4,
+        x: { duration: 1 },
+      }}
+    >
       {/* image-box  */}
-      <div className="h-[250px] overflow-hidden    rounded-lg">
+      <div className="h-[250px] overflow-hidden rounded-lg">
         <a className="z-10" href={liveURL?.url}>
           <Image
             width={400}
             height={220}
-            className="h-full hover:scale-110 duration-300 ease-in object-cover rounded-lg"
+            className="h-full object-cover rounded-lg"
             src={cover?.srcPath}
             alt="Img"
           />
@@ -66,16 +76,14 @@ const Project = ({ project }) => {
             </div>
           </a>
           <div className="flex items-center">
-            <a href={liveURL?.url}>
-              <div className="flex items-center">
-                <span>Live</span>
-                <FcEnteringHeavenAlive className="text-3xl text_brand_pri" />
-              </div>
+            <a href={liveURL?.url} className="flex items-center">
+              <span>Live</span>
+              <FcEnteringHeavenAlive className="text-3xl text_brand_pri" />
             </a>
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
