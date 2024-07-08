@@ -8,7 +8,8 @@ const Page = ({ params }) => {
   const { id, title, image, body, date } = blog[0];
 
   return (
-    <div className="min-h-screen">
+    <div
+      className="min-h-screen">
       <div className=" blog_glass  py-10 px-6 shadow-xl shadow-white border-2 border-white">
         <Link href={`/blog/${id}`}>
           <div className="w-full lg:h-[400px] cursor-pointer h-[200px]">

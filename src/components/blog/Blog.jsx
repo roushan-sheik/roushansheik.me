@@ -1,4 +1,5 @@
 "use client";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { CiCalendar } from "react-icons/ci";
@@ -6,7 +7,17 @@ import { CiCalendar } from "react-icons/ci";
 const Blog = ({ blog }) => {
   const { id, title, image, body, date } = blog;
   return (
-    <div className=" blog_glass p-6 shadow-xl shadow-white border-2 border-white">
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{
+        ease: "linear",
+        duration: 0.4,
+        x: { duration: 1 },
+      }}
+      className=" blog_glass p-6 shadow-xl shadow-white border-2 border-white"
+    >
       <Link href={`/blog/${id}`}>
         <div className="w-full lg:h-[300px] cursor-pointer h-[200px]">
           <Image
@@ -31,7 +42,7 @@ const Blog = ({ blog }) => {
           <button className=" text_brand_pri">Read More+</button>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

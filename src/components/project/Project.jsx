@@ -19,15 +19,15 @@ const Project = ({ project }) => {
 
   return (
     <motion.div
-      className="card_glass text_pri p-4 rounded-lg border-2 shadow-[#fc90c8] overflow-hidden border-[#f8eef3] shadow-lg"
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{
-        ease: "linear",
-        duration: 0.4,
-        x: { duration: 1 },
-      }}
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{
+      ease: "linear",
+      duration: 0.4,
+      x: { duration: 1 },
+    }}
+    className="card_glass text_pri p-4 rounded-lg border-2 shadow-[#fc90c8] overflow-hidden border-[#f8eef3] shadow-lg"
     >
       {/* image-box  */}
       <div className="h-[250px] overflow-hidden rounded-lg">
