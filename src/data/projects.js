@@ -55,7 +55,7 @@ Products means Web Apps, AI tools, Softwares, Games, Mobile Apps etc.`,
     gitHubRepo: {
       owner: "roushan-sheik",
       icon: FaGithub,
-      repo: "https://github.com/roushan-sheik/bit-craft-frontend",
+      repo: "https://github.com/roushan-sheik/roushansheik.me",
       client: "https://github.com/roushan-sheik/bit-craft-frontend",
       server: "https://github.com/roushan-sheik/bit-craft-backend",
     },
