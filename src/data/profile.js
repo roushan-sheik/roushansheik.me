@@ -4,7 +4,7 @@ export const profile = {
   firstName: "ROUSHAN",
   lastName: "SHEIK",
   position: "MERN Stack Developer",
-  summary: ["Author Js All You Need To Know Book"],
+  summary: ["Author Of Js All You Need To Know Book"],
   avatar: {
     // srcPath:
     //   "https://res.cloudinary.com/dakrgonvu/image/upload/v1709822618/profile-500into500_kja8xe.png",
