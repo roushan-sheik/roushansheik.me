@@ -45,7 +45,7 @@ export default function Home() {
             <h4 className="text-[#d2f0f9] text-center lg:text-start py-2">
               {summary}
             </h4>
-            <h4 className="text-[#d2f0f9]  justify-center lg:justify-start py-2">
+            <h4 className="text-[#d2f0f9]  text-center lg:justify-start py-2">
               {location?.name}
             </h4>
             {/* button box container  */}

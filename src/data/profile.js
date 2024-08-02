@@ -4,9 +4,11 @@ export const profile = {
   firstName: "ROUSHAN",
   lastName: "SHEIK",
   position: "MERN Stack Developer",
-  summary: ["Author of javascript-algorithms repo on GitHub"],
+  summary: ["Author Js All You Need To Know Book"],
   avatar: {
-    // srcPath: 'https://res.cloudinary.com/dakrgonvu/image/upload/v1709822618/profile-500into500_kja8xe.png',
+    // srcPath:
+    //   "https://res.cloudinary.com/dakrgonvu/image/upload/v1709822618/profile-500into500_kja8xe.png",
+
     srcPath:
       "https://res.cloudinary.com/dakrgonvu/image/upload/v1709822675/profile-500into500-2_otijsr.png",
     caption: "Roushan Sheik",
