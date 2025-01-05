@@ -105,7 +105,7 @@ export default function Home() {
             {/* my resume  */}
             <div className="my-2 flex justify-center lg:justify-start">
               <a
-                href="https://drive.google.com/file/d/1ZKG1i5OhGMr30aH7i-t94xThNfPNNc3Z/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1UeTJRGQnP0jZ67YV8CItq2DVjhOMDvgh/view?usp=drive_link"
                 download
                 target="_blank"
               >
