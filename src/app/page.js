@@ -5,8 +5,6 @@ import { description, profile } from "@/data/profile";
 import Image from "next/image";
 import React from "react";
 
- 
-
 export default function Home() {
   const [showSocial, setShowSocial] = React.useState(false);
   const {
@@ -44,19 +42,22 @@ export default function Home() {
             <h4 className="secondary text-xl flex justify-center lg:justify-start  py-2 ">
               {position}
             </h4>
-            <h4 className="text-[#d2f0f9] text-center lg:text-start py-2">
+            <h4
+              title="https://www.youtube.com/@bytecode-bd"
+              className="text-[#d2f0f9] text-center lg:text-start py-2"
+            >
               {summary}
             </h4>
             <h4 className="text-[#d2f0f9]  text-center lg:text-start py-2">
               {location?.name}
             </h4>
             {/* button box container  */}
-            <div className="flex justify-center lg:justify-start py-3 gap-4">
+            <div className=" grid grid-cols-3 lg:grid-cols-7  py-3 gap-4">
               {tags.map((tag) => {
                 return (
                   <button
                     key={tag}
-                    className="py-1 px-2 text-black text-[.875rem] bg-gray-200 rounded"
+                    className="lg:py-2 btn_bg py-1 px-2  text-white text-[.875rem]  rounded"
                   >
                     {tag.name}
                   </button>
@@ -113,7 +114,7 @@ export default function Home() {
         </div>
         {/* bottom Para graph container  */}
         <div>
-          <p className=" text-center text-[#edfaff] lg:text-left lg:text-base text-[15px]   my-8">
+          <p className=" text-center text-[#edfaff] lg:text-justify lg:text-base text-[15px]   my-8">
             {description}
           </p>
         </div>
