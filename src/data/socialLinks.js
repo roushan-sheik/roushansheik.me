@@ -14,14 +14,14 @@ export const socialLinks = [
   {
     id: 1,
     name: FaLinkedin,
-    url: "https://www.linkedin.com/in/roushansheik/",
+    url: "https://www.linkedin.com/in/roushan-sheik/",
     secondary: false,
     caption: "Roushan Sheik on LinkedIn",
   },
   {
     id: 2,
     name: FaGithub,
-    url: "https://github.com/roushansheik",
+    url: "https://github.com/roushan-sheik",
     secondary: false,
     caption: "Roushan Sheikh on GitHub",
   },
@@ -35,7 +35,7 @@ export const socialLinks = [
   {
     id: 4,
     name: FaFacebook,
-    url: "https://www.facebook.com/mdrowshansheikh008",
+    url: "https://www.facebook.com/mdrowshansheikh008/",
     secondary: true,
     hidden: true,
     caption: "Md Rowshan Sheikh on Facebook",
@@ -65,7 +65,7 @@ export const socialLinks = [
   {
     id: 8,
     name: FaStackOverflow,
-    url: "https://stackoverflow.com/users/7794070/oleksii-trekhleb",
+    url: "https://stackoverflow.com/users/22978549/roushan-sheik",
     secondary: true,
     hidden: true,
     caption: "Roushan Sheik on StackOverflow",
