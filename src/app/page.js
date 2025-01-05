@@ -71,6 +71,7 @@ export default function Home() {
                   ? socialLinks?.map((social) => {
                       return (
                         <a
+                          target="_blank"
                           key={social.name}
                           title={social.caption}
                           className="hover:primary_yellow duration-300 ease-in text-red lg:text-[24px] text-[20px]"
@@ -83,6 +84,7 @@ export default function Home() {
                   : socialLinks.slice(0, 5).map((social) => {
                       return (
                         <a
+                          target="_blank"
                           key={social.id}
                           title={social.caption}
                           className="hover:primary_yellow duration-300 ease-in text-red lg:text-[24px] text-[20px]"
