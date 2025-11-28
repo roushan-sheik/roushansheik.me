@@ -11,6 +11,8 @@ export const profile = {
 
     srcPath:
       "https://res.cloudinary.com/dakrgonvu/image/upload/v1709822675/profile-500into500-2_otijsr.png",
+    // srcPath:
+    //   "https://res.cloudinary.com/dakrgonvu/image/upload/v1764345532/my-photo_vzbrts.jpg",
     caption: "Roushan Sheik",
   },
   location: {
@@ -23,6 +25,9 @@ export const profile = {
     { name: "PostgreSQL" },
     { name: "MongoDB" },
     { name: "Prisma" },
+    { name: "Docker" },
+    { name: "CI/CD" },
+    { name: "AWS" },
   ],
   socialLinks,
 };
