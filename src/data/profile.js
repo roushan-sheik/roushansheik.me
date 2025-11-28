@@ -31,5 +31,4 @@ export const profile = {
   ],
   socialLinks,
 };
-export const description =
-  "Hi I'm Roushan Sheikh, a proficient TypeScript programmer with three years of self-learning experience in the field. I have recently completed a Web Development course at Programming Hero. My expertise spans a wide range of popular frameworks and libraries, including Tailwind CSS, React.js, Redux Toolkit | RTK Query, Shadcn UI, NextUI, Node.js, Express.js, Next.js, PostgreSQL, MongoDB, and Prisma, enabling me to build dynamic and responsive web applications.";
+export const description = `I am a skilled Full-Stack Developer with three years of experience. Currently, I work at Softvence as a Full-Stack Developer, where I contribute to international, enterprise-level applications using TypeScript, Next.js, Node.js, PostgreSQL, MongoDB, and Prisma. I have a strong understanding of TypeScript and Object-Oriented Programming (OOP) principles. Additionally, I am proficient in DevOps practices and tools including Git, GitHub, Linux, Docker, CI/CD pipelines, VPS hosting, AWS, Nginx, PM2, Firebase, and Postman. I am passionate about leveraging my skills to develop high-quality, impactful web solutions with robust deployment and infrastructure.`;
