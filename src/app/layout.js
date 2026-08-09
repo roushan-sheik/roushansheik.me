@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${roboto.className} bg_gradient mx-auto`}>
-        <main className="max-w-[760px] mx-auto px-6 lg:px-8">
+        <main className="max-w-[1440px] mx-auto px-16 lg:px-8">
           <Header />
           <div>{children}</div>
           <Footer />

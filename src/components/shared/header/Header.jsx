@@ -2,10 +2,10 @@ import { navData } from "@/constants/nav";
 import Link from "next/link";
 const Header = () => {
   return (
-    <div className="flex flex-row items-center justify-start space-x-8 py-8">
+    <div className="flex flex-row items-center justify-start space-x-8 py-6">
       <div>
         <Link href="/">
-          <h3 className="cursor-pointer font-bold text-black text-[18px] tracking-tight">
+          <h3 className="cursor-pointer font-bold text-black text-[18px] tracking-widest hover:text-brand-hover transition-colors duration-200">
             ROUSHANSHEIK
           </h3>
         </Link>
@@ -13,7 +13,7 @@ const Header = () => {
       <div className={"flex space-x-6 text-[13px] text-gray-500 font-medium"}>
         {navData.map((nav) => (
           <Link href={nav.path} key={nav.id}>
-            <p className={"uppercase hover:text-black transition-colors duration-200"}>{nav.name}</p>
+            <p className={"uppercase hover:text-brand-hover/70 transition-colors duration-200"}>{nav.name}</p>
           </Link>
         ))}
       </div>

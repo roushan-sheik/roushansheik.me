@@ -68,3 +68,7 @@ This project is a personal portfolio website for Roushan Sheik. It uses Next.js 
 - `src/app/globals.css`: Global styles, contains Tailwind directives.
 - `tailwind.config.js`: Tailwind configuration.
 - `src/data/profile.js`: Contains the personal data used across the site.
+
+## Design Tokens
+- **Brand Hover Primary**: `#E63946` (configured as `brand-hover` in Tailwind).
+- **Brand Hover Secondary**: Uses a fractional opacity of the primary color, e.g., `text-brand-hover/70`.
