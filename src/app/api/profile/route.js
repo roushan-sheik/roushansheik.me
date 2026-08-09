@@ -1,6 +1,7 @@
 import connectToDatabase from "@/lib/mongoose";
 import Profile from "@/models/Profile";
 import { NextResponse } from "next/server";
+import { profile as defaultProfile, description as defaultDescription } from "@/data/profile";
 
 export async function GET() {
   try {
@@ -8,13 +9,14 @@ export async function GET() {
     // Assuming there's only one profile document for the portfolio
     let profile = await Profile.findOne();
     if (!profile) {
-      // Return a default empty profile if none exists
       return NextResponse.json({
-        firstName: "",
-        lastName: "",
-        position: "",
-        summary: [],
-        locationName: "",
+        firstName: defaultProfile.firstName,
+        lastName: defaultProfile.lastName,
+        position: defaultProfile.position,
+        summary: defaultProfile.summary,
+        locationName: defaultProfile.location.name,
+        avatarUrl: defaultProfile.avatar.srcPath,
+        description: defaultDescription,
       }, { status: 200 });
     }
     return NextResponse.json(profile, { status: 200 });
@@ -36,6 +38,10 @@ export async function PUT(request) {
       profile.position = data.position;
       profile.summary = data.summary;
       profile.locationName = data.locationName;
+      
+      if (data.avatarUrl) profile.avatarUrl = data.avatarUrl;
+      if (data.description !== undefined) profile.description = data.description;
+      
       await profile.save();
     } else {
       profile = await Profile.create(data);

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Zap, LayoutDashboard, Home, Newspaper, Globe } from "lucide-react";
 
 export default function DashboardLayout({ children }) {
   return (
@@ -8,25 +9,25 @@ export default function DashboardLayout({ children }) {
         <div>
           <div className="px-6 py-8 border-b border-gray-50">
             <h2 className="text-xl font-black text-gray-900 tracking-tight flex items-center gap-2">
-              <span className="text-2xl">⚡</span> Workspace
+              <Zap className="text-brand-hover w-6 h-6" /> Workspace
             </h2>
           </div>
           <nav className="mt-6 flex flex-col gap-1 px-4">
-            <Link href="/dashboard" className="px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all">
-              Overview
+            <Link href="/cms/dashboard" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all">
+              <LayoutDashboard className="w-4 h-4" /> Overview
             </Link>
-            <Link href="/dashboard/home" className="px-4 py-3 text-sm font-medium bg-gray-900 text-white shadow-md rounded-xl transition-all">
-              Home Page
+            <Link href="/cms/dashboard/home" className="flex items-center gap-3 px-4 py-3 text-sm font-medium bg-gray-900 text-white shadow-md rounded-xl transition-all">
+              <Home className="w-4 h-4 text-gray-200" /> Home Page
             </Link>
-            <Link href="/dashboard/blogs" className="px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all">
-              Blogs Manager
+            <Link href="/cms/dashboard/blogs" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all">
+              <Newspaper className="w-4 h-4" /> Blogs Manager
             </Link>
           </nav>
         </div>
         
         <div className="p-4 mb-4">
           <Link href="/" className="flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium text-gray-600 bg-gray-50 hover:bg-gray-100 hover:text-gray-900 rounded-xl transition-all border border-gray-200">
-            <span>🌍</span> View Live Site
+            <Globe className="w-4 h-4" /> View Live Site
           </Link>
         </div>
       </aside>

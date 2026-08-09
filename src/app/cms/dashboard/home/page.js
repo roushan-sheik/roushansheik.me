@@ -9,7 +9,10 @@ export default function HomeEditor() {
     position: "",
     summary: "",
     locationName: "",
+    avatarUrl: "",
+    description: "",
   });
+  const [avatarFile, setAvatarFile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
@@ -25,6 +28,8 @@ export default function HomeEditor() {
             position: data.position || "",
             summary: Array.isArray(data.summary) ? data.summary.join("\\n") : data.summary || "",
             locationName: data.locationName || "",
+            avatarUrl: data.avatarUrl || "",
+            description: data.description || "",
           });
         }
         setLoading(false);
@@ -45,9 +50,31 @@ export default function HomeEditor() {
     setSaving(true);
     setMessage("");
 
-    // Convert summary textarea back to array
+    let uploadedAvatarUrl = formData.avatarUrl;
+
+    if (avatarFile) {
+      const form = new FormData();
+      form.append("file", avatarFile);
+      try {
+        const uploadRes = await fetch("/api/upload", { method: "POST", body: form });
+        const uploadData = await uploadRes.json();
+        if (uploadData.url) {
+          uploadedAvatarUrl = uploadData.url;
+        } else {
+          setMessage("Image upload failed.");
+          setSaving(false);
+          return;
+        }
+      } catch (err) {
+        setMessage("Error uploading image.");
+        setSaving(false);
+        return;
+      }
+    }
+
     const submitData = {
       ...formData,
+      avatarUrl: uploadedAvatarUrl,
       summary: formData.summary.split("\\n").filter((line) => line.trim() !== ""),
     };
 
@@ -93,6 +120,28 @@ export default function HomeEditor() {
 
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 space-y-8 transition-all hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
         
+        <div className="border-b border-gray-100 pb-8">
+          <h3 className="text-lg font-semibold text-gray-800 mb-6">Profile Image</h3>
+          <div className="flex items-center gap-6">
+            {formData.avatarUrl || avatarFile ? (
+              <img src={avatarFile ? URL.createObjectURL(avatarFile) : formData.avatarUrl} alt="Avatar" className="w-24 h-24 rounded-full object-cover shadow-sm border border-gray-200" />
+            ) : (
+              <div className="w-24 h-24 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 border border-gray-200">
+                No Image
+              </div>
+            )}
+            <div className="flex-1">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Upload new avatar</label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => setAvatarFile(e.target.files[0])}
+                className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-gray-900 file:text-white hover:file:bg-black transition-all cursor-pointer"
+              />
+              <p className="text-xs text-gray-500 mt-2">Handled securely by Cloudinary.</p>
+            </div>
+          </div>
+        </div>
         <div className="border-b border-gray-100 pb-8">
           <h3 className="text-lg font-semibold text-gray-800 mb-6">Personal Details</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -155,18 +204,33 @@ export default function HomeEditor() {
         </div>
 
         <div className="pb-4">
-          <h3 className="text-lg font-semibold text-gray-800 mb-6">Summary</h3>
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Bullet Points (One per line)</label>
-            <textarea
-              name="summary"
-              value={formData.summary}
-              onChange={handleChange}
-              required
-              rows="5"
-              className="w-full px-4 py-3 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 outline-none resize-y"
-              placeholder="Author of...&#10;15+ years experience...&#10;Speaker at..."
-            />
+          <h3 className="text-lg font-semibold text-gray-800 mb-6">Bio & Summary</h3>
+          <div className="space-y-6">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Short Bullet Points (One per line)</label>
+              <textarea
+                name="summary"
+                value={formData.summary}
+                onChange={handleChange}
+                required
+                rows="4"
+                className="w-full px-4 py-3 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 outline-none resize-y"
+                placeholder="Author of...&#10;15+ years experience...&#10;Speaker at..."
+              />
+            </div>
+            
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">Long Bio Description (Footer)</label>
+              <textarea
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                required
+                rows="6"
+                className="w-full px-4 py-3 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 outline-none resize-y"
+                placeholder="I am a skilled Full-Stack Developer..."
+              />
+            </div>
           </div>
         </div>
 

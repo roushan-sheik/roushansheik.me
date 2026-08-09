@@ -1,12 +1,16 @@
 "use client";
 import Btn from "@/components/button/Btn";
-import { description, profile as localProfile } from "@/data/profile";
+import { description as defaultDescription, profile as localProfile } from "@/data/profile";
 import Image from "next/image";
 import React from "react";
 
 export default function Home() {
   const [showSocial, setShowSocial] = React.useState(false);
-  const [profile, setProfile] = React.useState(localProfile);
+  const [profile, setProfile] = React.useState({
+    ...localProfile,
+    avatarUrl: localProfile.avatar.srcPath,
+    description: defaultDescription,
+  });
 
   React.useEffect(() => {
     fetch("/api/profile")
@@ -20,6 +24,8 @@ export default function Home() {
             position: data.position || prev.position,
             summary: data.summary || prev.summary,
             location: { name: data.locationName || prev.location?.name },
+            avatarUrl: data.avatarUrl || prev.avatarUrl,
+            description: data.description || prev.description,
           }));
         }
       })
@@ -31,9 +37,9 @@ export default function Home() {
     lastName,
     position,
     summary,
-    avatar,
+    avatarUrl,
+    description,
     location,
-    tags,
     socialLinks,
   } = profile;
   return (
@@ -44,7 +50,7 @@ export default function Home() {
           <div className="flex-shrink-0">
             <Image
               className={`rounded-full w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] object-cover`}
-              src={avatar.srcPath}
+              src={avatarUrl}
               width={300}
               height={300}
               alt="Roushan"
@@ -121,7 +127,7 @@ export default function Home() {
         </div>
         {/* bottom Para graph container  */}
         <div>
-          <p className="text-gray-700 text-[15px] my-8 leading-[1.8] text-left">
+          <p className="text-gray-700 text-[15px] my-8 leading-[1.8] text-left whitespace-pre-wrap">
             {description}
           </p>
         </div>

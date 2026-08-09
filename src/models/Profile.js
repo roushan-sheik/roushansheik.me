@@ -22,6 +22,14 @@ const profileSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    avatarUrl: {
+      type: String,
+      required: false,
+    },
+    description: {
+      type: String,
+      required: false,
+    }
   },
   { timestamps: true }
 );
