@@ -1,6 +1,5 @@
 "use client";
 import Btn from "@/components/button/Btn";
-import ParticlesComponent from "@/components/paticles-animation/ParticlesComponent";
 import { description, profile } from "@/data/profile";
 import Image from "next/image";
 import React from "react";
@@ -19,13 +18,12 @@ export default function Home() {
   } = profile;
   return (
     <main>
-      <ParticlesComponent />
       <div className="main_container_box">
-        <div className="flex flex-col lg:flex-row  mt-8  gap-8">
+        <div className="flex flex-col sm:flex-row mt-4 sm:mt-12 gap-6 sm:gap-8 items-center sm:items-start">
           {/* profile image box */}
-          <div className="flex justify-center lg:justify-start ">
+          <div className="flex-shrink-0">
             <Image
-              className={`rounded-full w-[260px] h-[260px] ring-4 shadow-2xl shadow-[#ffffff7d] lg:ring-6 ring-[#00a6fb]`}
+              className={`rounded-full w-[160px] h-[160px] sm:w-[170px] sm:h-[170px] object-cover`}
               src={avatar.srcPath}
               width={200}
               height={200}
@@ -33,39 +31,26 @@ export default function Home() {
             />
           </div>
           {/* content box parent */}
-          <div>
+          <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
             {/* title box */}
-            <div className="flex text-3xl lg:text-4xl text-sky-500 justify-center lg:justify-start font-bold  gap-2">
-              <h1 className="capitalize primary_black  ">{firstName} </h1>
-              <h1 className="capitalize primary_yellow ">{lastName}</h1>
+            <div className="text-[32px] text-black font-extrabold tracking-tight leading-tight">
+              <h1 className="uppercase">{firstName} {lastName}</h1>
             </div>
-            <h4 className="secondary text-xl flex justify-center lg:justify-start  py-2 ">
-              {position}
+            <h4 className="text-gray-500 text-[15px] py-1 flex items-center gap-2">
+              <span className="opacity-70 text-sm">💼</span> {position}
             </h4>
             <h4
               title="https://www.youtube.com/@bytecode-bd"
-              className="text-[#d2f0f9] text-center lg:text-start py-2"
+              className="text-gray-600 text-[15px] py-0.5"
             >
               {summary}
             </h4>
-            <h4 className="text-[#d2f0f9]  text-center lg:text-start py-2">
-              {location?.name}
+            <h4 className="text-gray-500 text-[15px] py-0.5 flex items-center gap-2">
+              <span className="opacity-70 text-sm">📍</span> {location?.name}
             </h4>
-            {/* button box container  */}
-            <div className=" grid grid-cols-3 lg:grid-cols-7  py-3 gap-4">
-              {tags.map((tag) => {
-                return (
-                  <button
-                    key={tag}
-                    className="lg:py-2 btn_bg py-1 px-2  text-white text-[.875rem]  rounded"
-                  >
-                    {tag.name}
-                  </button>
-                );
-              })}
-            </div>
+
             {/* Social links  */}
-            <div className="flex  justify-center lg:justify-start py-3 gap-2">
+            <div className="flex py-3 gap-3">
               <div className="flex lg:gap-4 gap-2">
                 {showSocial
                   ? socialLinks?.map((social) => {
@@ -74,7 +59,7 @@ export default function Home() {
                           target="_blank"
                           key={social.name}
                           title={social.caption}
-                          className="hover:primary_yellow duration-300 ease-in text-red lg:text-[24px] text-[20px]"
+                          className="hover:text-gray-600 transition-colors duration-200 text-black text-[20px]"
                           href={social.url}
                         >
                           {<social.name />}
@@ -87,7 +72,7 @@ export default function Home() {
                           target="_blank"
                           key={social.id}
                           title={social.caption}
-                          className="hover:primary_yellow duration-300 ease-in text-red lg:text-[24px] text-[20px]"
+                          className="hover:text-gray-600 transition-colors duration-200 text-black text-[20px]"
                           href={social.url}
                         >
                           {<social.name />}
@@ -96,27 +81,18 @@ export default function Home() {
                     })}
               </div>
               <button
-                className="text-[#00a6fb] font-light"
+                className="text-gray-500 font-light"
                 onClick={() => setShowSocial(!showSocial)}
               >
                 {showSocial ? "- less" : "+ more"}
               </button>
             </div>
-            {/* my resume  */}
-            <div className="my-2 flex justify-center lg:justify-start">
-              <a
-                href="https://drive.google.com/file/d/1SaTXM29Rhm6yZzBJh3ElqaRItwAbfMjA/view?usp=sharing"
-                download
-                target="_blank"
-              >
-                <Btn>Resume</Btn>
-              </a>
-            </div>
+
           </div>
         </div>
         {/* bottom Para graph container  */}
         <div>
-          <p className=" text-center text-[#edfaff] lg:text-justify lg:text-base text-[15px]   my-8">
+          <p className="text-gray-700 text-[15px] my-8 leading-[1.8] text-left">
             {description}
           </p>
         </div>

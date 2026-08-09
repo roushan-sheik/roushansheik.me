@@ -1,10 +1,10 @@
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 
 import Footer from "@/components/shared/footer/Footer";
 import Header from "@/components/shared/header/Header";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700", "900"] });
 
 export const metadata = {
   title: "Roushan Sheik",
@@ -14,8 +14,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg_gradient mx-auto`}>
-        <main className={" container w-[90%] mx-auto"}>
+      <body className={`${roboto.className} bg_gradient mx-auto`}>
+        <main className="max-w-[760px] mx-auto px-6 lg:px-8">
           <Header />
           <div>{children}</div>
           <Footer />
