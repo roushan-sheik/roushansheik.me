@@ -23,10 +23,10 @@ export default function Home() {
           {/* profile image box */}
           <div className="flex-shrink-0">
             <Image
-              className={`rounded-full w-[160px] h-[160px] sm:w-[170px] sm:h-[170px] object-cover`}
+              className={`rounded-full w-[200px] h-[200px] sm:w-[240px] sm:h-[240px] object-cover`}
               src={avatar.srcPath}
-              width={200}
-              height={200}
+              width={300}
+              height={300}
               alt="Roushan"
             />
           </div>
