@@ -1,89 +1,118 @@
-import { motion } from "framer-motion";
 import Image from "next/image";
-import { CiCalendar } from "react-icons/ci";
-import { FaGithubSquare } from "react-icons/fa";
-import { FcEnteringHeavenAlive } from "react-icons/fc";
+import { Star, Calendar, Play, Github, Award } from "lucide-react";
+
 const Project = ({ project }) => {
   const {
-    id,
-    name,
-    srcURL,
-    liveURL,
-    cover,
-    startDate,
-    summary,
+    title,
+    icon,
+    thumbnailUrl,
+    date,
+    stars,
+    description,
     tags,
-    gitHubRepo,
-    achievements,
+    achievementsCount,
+    demoUrl,
+    sourceUrl,
   } = project;
 
   return (
-    <motion.div
-    initial={{ opacity: 0, y: -20 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: -20 }}
-    transition={{
-      ease: "linear",
-      duration: 0.4,
-      x: { duration: 1 },
-    }}
-    className="card_glass text_pri p-4 rounded-lg border-2 shadow-[#fc90c8] overflow-hidden border-[#f8eef3] shadow-lg"
-    >
-      {/* image-box  */}
-      <div className="h-[250px] overflow-hidden rounded-lg">
-        <a className="z-10" href={liveURL?.url}>
+    <div className="flex flex-col bg-white rounded-xl border border-gray-200 overflow-hidden transition-all hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+      {/* Thumbnail */}
+      <div className="w-full h-48 relative bg-gray-900 border-b border-gray-100 overflow-hidden">
+        {thumbnailUrl && (
           <Image
-            width={400}
-            height={220}
-            className="h-full object-cover rounded-lg"
-            src={cover?.srcPath}
-            alt="Img"
+            src={thumbnailUrl}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-500 hover:scale-105"
           />
-        </a>
+        )}
       </div>
-      {/* content-box  */}
-      <div className="p-4">
-        <a href={liveURL?.url}>
-          <h2 className="text-2xl text_pri hover:primary_yellow cursor-pointer">
-            {name}
-          </h2>
-        </a>
-        <div className="flex my-3 items-center gap-2 secondary_black text-[14px]">
-          <CiCalendar className="text-xl" />
-          <p>{startDate}</p>
+
+      {/* Content */}
+      <div className="p-6 flex flex-col flex-1">
+        
+        {/* Header: Icon + Title */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-xl">{icon}</span>
+          <h3 className="text-lg font-semibold text-gray-900 leading-tight">
+            {title}
+          </h3>
         </div>
-        <p className="text_sec">{summary}</p>
-        {/* tags btn  */}
-        <h2 className="text-lg font-medium mt-3 text_pri">Techonologies</h2>
-        <div className=" flex my-3 gap-2 flex-wrap">
-          {tags?.map((tag) => {
-            return (
-              <button
-                key={tag}
-                className="px-2 py-1 text-[14px] techonology_glass rounded-md"
-              >
-                {tag.name}
-              </button>
-            );
-          })}
-        </div>
-        {/* repo source code  */}
-        <div className="mt-6 flex text_pri items-center justify-between gap-2">
-          <a href={gitHubRepo?.repo}>
-            <div className="flex items-center gap-1">
-              <FaGithubSquare className="text-3xl text_pri cursor-pointer" />
-              <span>Source Code</span>
-            </div>
-          </a>
-          <div className="flex items-center">
-            <a href={liveURL?.url} className="flex items-center">
-              <span>Live</span>
-              <FcEnteringHeavenAlive className="text-3xl text_brand_pri" />
-            </a>
+
+        {/* Meta: Date & Stars */}
+        <div className="flex items-center justify-between text-xs font-medium text-gray-500 mb-4">
+          <div className="flex items-center gap-1.5">
+            <Calendar className="w-3.5 h-3.5" />
+            <span>{date}</span>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <Star className="w-3.5 h-3.5" />
+            <span>{stars}</span>
           </div>
         </div>
+
+        {/* Description */}
+        <p className="text-sm text-gray-600 leading-relaxed mb-5 flex-1 line-clamp-4">
+          {description}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-5">
+          {tags?.slice(0, 3).map((tag, idx) => (
+            <span
+              key={idx}
+              className="px-2.5 py-1 bg-gray-100 text-gray-600 text-[11px] font-semibold rounded-md tracking-wide uppercase"
+            >
+              {tag}
+            </span>
+          ))}
+          {tags?.length > 3 && (
+            <span className="px-2.5 py-1 text-gray-500 text-[11px] font-medium tracking-wide">
+              + more
+            </span>
+          )}
+        </div>
+
+        {/* Achievements */}
+        {achievementsCount > 0 && (
+          <div className="flex items-center gap-2 mb-6">
+            <Award className="w-4 h-4 text-gray-800" />
+            <span className="text-xs font-semibold text-gray-900 border-b border-gray-300">
+              Achievements
+            </span>
+            <span className="bg-gray-100 text-gray-600 text-[10px] font-bold px-1.5 py-0.5 rounded">
+              {achievementsCount}
+            </span>
+          </div>
+        )}
+        {!achievementsCount && <div className="mb-6"></div>}
+
+        {/* Buttons */}
+        <div className="flex items-center gap-3 mt-auto">
+          {demoUrl && (
+            <a
+              href={demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 flex-1 py-2 px-4 border border-gray-200 rounded-lg text-sm font-semibold text-gray-900 hover:bg-gray-50 transition-colors"
+            >
+              <Play className="w-4 h-4 fill-current" /> Demo
+            </a>
+          )}
+          {sourceUrl && (
+            <a
+              href={sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 flex-1 py-2 px-4 border border-gray-200 rounded-lg text-sm font-semibold text-gray-900 hover:bg-gray-50 transition-colors"
+            >
+              <Github className="w-4 h-4" /> Source Code
+            </a>
+          )}
+        </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
