@@ -1,8 +1,24 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Zap, LayoutDashboard, Home, Newspaper, Globe, FolderDot, BookOpen } from "lucide-react";
 import LogoutButton from "./LogoutButton";
 
 export default function DashboardLayout({ children }) {
+  const pathname = usePathname();
+
+  const getLinkClass = (path) => {
+    // For the root dashboard overview, it must be an exact match
+    const isActive = path === "/cms/dashboard" 
+      ? pathname === path 
+      : pathname?.startsWith(path);
+      
+    return isActive
+      ? "flex items-center gap-3 px-4 py-3 text-sm font-medium bg-gray-900 text-white shadow-md rounded-xl transition-all"
+      : "flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all";
+  };
+
   return (
     <div className="min-h-screen flex bg-gray-50 text-black">
       {/* Sidebar */}
@@ -14,19 +30,19 @@ export default function DashboardLayout({ children }) {
             </h2>
           </div>
           <nav className="mt-6 flex flex-col gap-1 px-4">
-            <Link href="/cms/dashboard" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all">
+            <Link href="/cms/dashboard" className={getLinkClass("/cms/dashboard")}>
               <LayoutDashboard className="w-4 h-4" /> Overview
             </Link>
-            <Link href="/cms/dashboard/home" className="flex items-center gap-3 px-4 py-3 text-sm font-medium bg-gray-900 text-white shadow-md rounded-xl transition-all">
-              <Home className="w-4 h-4 text-gray-200" /> Home Page
+            <Link href="/cms/dashboard/home" className={getLinkClass("/cms/dashboard/home")}>
+              <Home className="w-4 h-4" /> Home Page
             </Link>
-            <Link href="/cms/dashboard/projects" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all">
+            <Link href="/cms/dashboard/projects" className={getLinkClass("/cms/dashboard/projects")}>
               <FolderDot className="w-4 h-4" /> Projects Manager
             </Link>
-            <Link href="/cms/dashboard/blogs" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all">
+            <Link href="/cms/dashboard/blogs" className={getLinkClass("/cms/dashboard/blogs")}>
               <Newspaper className="w-4 h-4" /> Blogs Manager
             </Link>
-            <Link href="/cms/dashboard/publications" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all">
+            <Link href="/cms/dashboard/publications" className={getLinkClass("/cms/dashboard/publications")}>
               <BookOpen className="w-4 h-4" /> Publications
             </Link>
           </nav>

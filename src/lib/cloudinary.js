@@ -67,3 +67,61 @@ export async function uploadImage(buffer, fileName, folder = "portfolio") {
     return `/uploads/${safeFileName}`;
   }
 }
+
+/**
+ * Deletes an image from Cloudinary or local storage based on the URL.
+ * 
+ * @param {string} imageUrl - The URL of the image to delete
+ * @returns {Promise<boolean>} True if deleted successfully
+ */
+export async function deleteImage(imageUrl) {
+  if (!imageUrl) return false;
+
+  try {
+    // 1. Handle Local Storage fallback images
+    if (imageUrl.startsWith("/uploads/")) {
+      const fs = await import("fs/promises");
+      const filePath = path.join(process.cwd(), "public", imageUrl);
+      try {
+        await fs.unlink(filePath);
+        return true;
+      } catch (err) {
+        console.error(`Failed to delete local file ${filePath}:`, err.message);
+        return false;
+      }
+    }
+
+    // 2. Handle Cloudinary images
+    if (imageUrl.includes("cloudinary.com")) {
+      configureCloudinary();
+      
+      if (!process.env.CLOUDINARY_CLOUD_NAME) {
+        throw new Error("Cloudinary credentials not loaded.");
+      }
+
+      // Extract public_id from Cloudinary URL
+      // Example URL: https://res.cloudinary.com/demo/image/upload/v1234567890/portfolio/sample.jpg
+      // public_id would be: portfolio/sample
+      const urlParts = imageUrl.split("/");
+      const uploadIndex = urlParts.findIndex(part => part === "upload");
+      
+      if (uploadIndex !== -1 && urlParts.length > uploadIndex + 2) {
+        // Skip the 'v1234567890' version part (uploadIndex + 1)
+        const pathParts = urlParts.slice(uploadIndex + 2);
+        const fileNameWithExt = pathParts.pop();
+        const fileName = fileNameWithExt.split(".")[0]; // Remove extension
+        const folderPath = pathParts.join("/");
+        
+        const public_id = folderPath ? `${folderPath}/${fileName}` : fileName;
+        
+        const result = await cloudinary.uploader.destroy(public_id);
+        return result.result === "ok";
+      }
+    }
+
+    return false;
+  } catch (error) {
+    console.error("Error deleting image:", error);
+    return false;
+  }
+}

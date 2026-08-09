@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Star, Calendar, Play, Github, Award } from "lucide-react";
+import { Star, Calendar, Play, Award } from "lucide-react";
+import { FiGithub } from "react-icons/fi";
 
 const Project = ({ project }) => {
   const {
@@ -107,7 +108,7 @@ const Project = ({ project }) => {
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 flex-1 py-2 px-4 border border-gray-200 rounded-lg text-sm font-semibold text-gray-900 hover:bg-gray-50 transition-colors"
             >
-              <Github className="w-4 h-4" /> Source Code
+              <FiGithub className="w-4 h-4" /> Source Code
             </a>
           )}
         </div>

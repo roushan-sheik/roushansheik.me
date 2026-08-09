@@ -25,7 +25,7 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen pb-20">
-      <div className="project_container mt-12 max-w-4xl mx-auto">
+      <div className="project_container mt-12 max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header Section */}
         <div className="flex items-center gap-3 mb-10">
           <h1 className="text-4xl font-black text-gray-900 tracking-tight uppercase">

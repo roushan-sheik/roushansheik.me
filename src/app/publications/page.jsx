@@ -52,7 +52,7 @@ export default function PublicationsPage() {
 
   return (
     <div className="min-h-screen pb-20">
-      <div className="project_container mt-12 max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="project_container mt-12 max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header Section */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-4">
