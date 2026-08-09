@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <main>
       <div className="main_container_box">
-        <div className="flex flex-col sm:flex-row mt-4 sm:mt-12 gap-6 sm:gap-8 items-center sm:items-start">
+        <div className="flex flex-col sm:flex-row mt-4 sm:mt-12 gap-6 sm:gap-8 items-center sm:items-center">
           {/* profile image box */}
           <div className="flex-shrink-0">
             <Image
