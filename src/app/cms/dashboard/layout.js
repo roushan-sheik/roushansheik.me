@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Zap, LayoutDashboard, Home, Newspaper, Globe } from "lucide-react";
+import LogoutButton from "./LogoutButton";
 
 export default function DashboardLayout({ children }) {
   return (
@@ -25,10 +26,11 @@ export default function DashboardLayout({ children }) {
           </nav>
         </div>
         
-        <div className="p-4 mb-4">
+        <div className="p-4 mb-4 flex flex-col gap-2">
           <Link href="/" className="flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium text-gray-600 bg-gray-50 hover:bg-gray-100 hover:text-gray-900 rounded-xl transition-all border border-gray-200">
             <Globe className="w-4 h-4" /> View Live Site
           </Link>
+          <LogoutButton />
         </div>
       </aside>
 
