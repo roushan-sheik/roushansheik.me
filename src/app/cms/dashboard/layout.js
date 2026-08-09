@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Zap, LayoutDashboard, Home, Newspaper, Globe, FolderDot } from "lucide-react";
+import { Zap, LayoutDashboard, Home, Newspaper, Globe, FolderDot, BookOpen } from "lucide-react";
 import LogoutButton from "./LogoutButton";
 
 export default function DashboardLayout({ children }) {
@@ -25,6 +25,9 @@ export default function DashboardLayout({ children }) {
             </Link>
             <Link href="/cms/dashboard/blogs" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all">
               <Newspaper className="w-4 h-4" /> Blogs Manager
+            </Link>
+            <Link href="/cms/dashboard/publications" className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-xl transition-all">
+              <BookOpen className="w-4 h-4" /> Publications
             </Link>
           </nav>
         </div>
