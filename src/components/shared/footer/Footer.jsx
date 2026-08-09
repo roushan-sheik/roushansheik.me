@@ -39,6 +39,12 @@ const Footer = () => {
               );
             }
           })}
+          <div className="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-[30px] h-[20px] rounded-[3px]" viewBox="0 0 600 360">
+              <rect width="600" height="460" fill="#006a4e" />
+              <circle cx="270" cy="180" r="120" fill="#f42a41" />
+            </svg>
+          </div>
         </div>
       </div>
     </footer>
