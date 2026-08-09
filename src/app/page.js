@@ -1,11 +1,31 @@
 "use client";
 import Btn from "@/components/button/Btn";
-import { description, profile } from "@/data/profile";
+import { description, profile as localProfile } from "@/data/profile";
 import Image from "next/image";
 import React from "react";
 
 export default function Home() {
   const [showSocial, setShowSocial] = React.useState(false);
+  const [profile, setProfile] = React.useState(localProfile);
+
+  React.useEffect(() => {
+    fetch("/api/profile")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data.error && data.firstName) {
+          setProfile((prev) => ({
+            ...prev,
+            firstName: data.firstName || prev.firstName,
+            lastName: data.lastName || prev.lastName,
+            position: data.position || prev.position,
+            summary: data.summary || prev.summary,
+            location: { name: data.locationName || prev.location?.name },
+          }));
+        }
+      })
+      .catch(console.error);
+  }, []);
+
   const {
     firstName,
     lastName,
