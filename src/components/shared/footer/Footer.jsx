@@ -18,7 +18,7 @@ const Footer = () => {
           </Link>
         </div>
         {/* bottom row: Social Links */}
-        <div className="flex justify-center gap-4 items-center">
+        <div className="flex flex-wrap justify-center gap-4 items-center">
           {socialLinks.map((social, index) => {
             if (!social.secondary) {
               return (
