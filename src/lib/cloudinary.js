@@ -32,11 +32,11 @@ const configureCloudinary = () => {
 export async function uploadImage(buffer, fileName, folder = "portfolio") {
   configureCloudinary();
 
-  if (!process.env.CLOUDINARY_CLOUD_NAME) {
-    throw new Error("Cloudinary credentials not loaded.");
-  }
-
   try {
+    if (!process.env.CLOUDINARY_CLOUD_NAME) {
+      throw new Error("Cloudinary credentials not loaded.");
+    }
+
     // 1. Try Cloudinary first
     const uploadResponse = await new Promise((resolve, reject) => {
       const uploadStream = cloudinary.uploader.upload_stream(
