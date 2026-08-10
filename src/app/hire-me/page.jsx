@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { GoMail } from "react-icons/go";
+import { Mail, MessageSquare } from "lucide-react";
 
 export default function HireMePage() {
   const [email, setEmail] = useState("");
@@ -41,75 +41,96 @@ export default function HireMePage() {
   };
 
   return (
-    <div className="h-full w-full flex items-center justify-center px-4 py-8">
-      <div className="max-w-lg w-full bg-white rounded-2xl sm:rounded-3xl shadow-xl p-6 sm:p-8 md:p-12 border border-gray-100 text-center relative overflow-hidden">
-        
-        <div className="mx-auto bg-gray-50 w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center mb-4 sm:mb-6 shadow-inner">
-          <GoMail className="text-3xl sm:text-4xl text-gray-700" />
+    <div className="h-full w-full flex items-center justify-center px-4 py-12 md:py-24">
+      <div className="max-w-2xl w-full bg-white rounded-xl shadow-2xl overflow-hidden font-mono border border-gray-200">
+        {/* Terminal Header */}
+        <div className="bg-gray-100 px-4 py-3 flex items-center gap-2 border-b border-gray-200">
+          <div className="w-3 h-3 rounded-full bg-red-400"></div>
+          <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+          <div className="w-3 h-3 rounded-full bg-green-400"></div>
+          <div className="flex-1 text-center text-xs text-gray-500 select-none font-sans tracking-wide">
+            roushansheik:~/hire-me
+          </div>
+          <div className="w-9"></div> {/* Balances the flex center */}
         </div>
-        
-        <h1 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight mb-2 sm:mb-3">
-          Hire Me
-        </h1>
-        <p className="text-gray-500 font-medium text-xs sm:text-sm leading-relaxed mb-6 sm:mb-8">
-          I'm currently available for new projects and full-time opportunities. Drop your email and a message, and I'll get back to you as soon as possible.
-        </p>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <div className="relative text-left">
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              disabled={status === "loading"}
-              className="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm sm:text-base font-medium py-3 sm:py-3.5 px-4 rounded-xl outline-none focus:border-gray-400 focus:ring-4 focus:ring-gray-100 transition-all placeholder-gray-400 disabled:opacity-70"
-            />
+        {/* Terminal Body */}
+        <div className="p-6 sm:p-8 text-gray-800 text-sm sm:text-base text-left">
+          <div className="mb-8 leading-relaxed">
+            <p className="mb-2 text-blue-600 font-bold">$ ./contract.sh</p>
+            <p className="text-gray-600">Initializing hiring module...</p>
+            <p className="text-gray-600 mb-4 animate-pulse">_</p>
+            <p className="text-gray-600 text-sm">I'm currently available for new projects and full-time opportunities. Provide your details below to establish a secure connection.</p>
           </div>
 
-          <div className="relative text-left">
-            <textarea
-              placeholder="Leave a message..."
-              value={userMessage}
-              onChange={(e) => setUserMessage(e.target.value)}
-              required
-              disabled={status === "loading"}
-              rows="4"
-              className="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm sm:text-base font-medium py-3 sm:py-3.5 px-4 rounded-xl outline-none focus:border-gray-400 focus:ring-4 focus:ring-gray-100 transition-all placeholder-gray-400 disabled:opacity-70 resize-none"
-            />
-          </div>
-          
-          <button
-            type="submit"
-            disabled={status === "loading" || !email || !userMessage}
-            className="w-full bg-gray-900 hover:bg-black text-white font-semibold py-3 sm:py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
-          >
-            {status === "loading" ? (
-              <>
-                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Sending...
-              </>
-            ) : (
-              "Send Message"
-            )}
-          </button>
-        </form>
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <div className="flex flex-col gap-2">
+              <label className="text-blue-600 flex items-center gap-2 font-semibold">
+                <Mail className="w-4 h-4 text-blue-600" /> EMAIL:
+              </label>
+              <div className="flex items-center gap-3 bg-gray-50 p-3 rounded border border-gray-200 focus-within:border-gray-400 transition-colors shadow-inner">
+                <span className="text-gray-400 font-bold">{'>'}</span>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  disabled={status === "loading"}
+                  spellCheck="false"
+                  className="flex-1 bg-transparent border-none outline-none text-gray-900 placeholder-gray-400 focus:ring-0 p-0"
+                  placeholder="example@gmail.com"
+                />
+              </div>
+            </div>
 
-        {status === "success" && (
-          <div className="mt-6 p-4 bg-green-50 text-green-700 text-sm font-semibold rounded-lg border border-green-100 animate-[fade-in-up_0.3s_ease-out]">
-            {message}
-          </div>
-        )}
-        
-        {status === "error" && (
-          <div className="mt-6 p-4 bg-red-50 text-red-700 text-sm font-semibold rounded-lg border border-red-100 animate-[fade-in-up_0.3s_ease-out]">
-            {message}
-          </div>
-        )}
+            <div className="flex flex-col  gap-2">
+              <label className="text-blue-600 flex items-center gap-2 font-semibold">
+                <MessageSquare className="w-4 h-4 text-blue-600" /> MESSAGE:
+              </label>
+              <div className="flex gap-3 bg-gray-50 p-3 rounded border border-gray-200 focus-within:border-gray-400 transition-colors shadow-inner">
+                <span className="text-gray-400 font-bold mt-1">{'>'}</span>
+                <textarea
+                  value={userMessage}
+                  onChange={(e) => setUserMessage(e.target.value)}
+                  required
+                  disabled={status === "loading"}
+                  rows="4"
+                  spellCheck="false"
+                  className="flex-1 bg-transparent border-none outline-none text-gray-900 placeholder-gray-400 focus:ring-0 p-0 resize-none leading-relaxed"
+                  placeholder="Type your transmission here..."
+                />
+              </div>
+            </div>
+
+            <div className="mt-6 flex justify-end">
+              <button
+                type="submit"
+                disabled={status === "loading" || !email || !userMessage}
+                className="bg-gray-900 hover:bg-black text-white py-2.5 px-6 rounded transition-all disabled:opacity-50 flex items-center gap-2 select-none shadow-md hover:shadow-lg focus:outline-none font-sans font-medium"
+              >
+                {status === "loading" ? "Executing..." : "Execute Send"}
+              </button>
+            </div>
+          </form>
+
+          {status === "success" && (
+            <div className="mt-8 border-t border-gray-200 pt-6">
+              <p className="text-blue-600 mb-2 font-bold">$ status check</p>
+              <p className="text-green-600 flex items-center gap-2 font-semibold">
+                <span className="text-green-600">✓</span> Transmission successfully dispatched. Awaiting response...
+              </p>
+            </div>
+          )}
+
+          {status === "error" && (
+            <div className="mt-8 border-t border-gray-200 pt-6">
+              <p className="text-blue-600 mb-2 font-bold">$ status check</p>
+              <p className="text-red-600 flex items-center gap-2 font-semibold">
+                <span className="text-red-600 font-black">ERR:</span> {message}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
