@@ -1,11 +1,7 @@
-import { v2 as cloudinary } from "cloudinary";
 import { NextResponse } from "next/server";
+import { uploadImage } from "@/lib/cloudinary";
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+const ALLOWED_FILE_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/svg+xml"];
 
 export async function POST(request) {
   try {
@@ -16,23 +12,24 @@ export async function POST(request) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
+    // Validate file type
+    if (!ALLOWED_FILE_TYPES.includes(file.type)) {
+      return NextResponse.json(
+        { error: "Invalid file type. Only JPG, PNG, WEBP, GIF, and SVG are allowed." },
+        { status: 400 }
+      );
+    }
+
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
-    const uploadResponse = await new Promise((resolve, reject) => {
-      const uploadStream = cloudinary.uploader.upload_stream(
-        { folder: "portfolio" },
-        (error, result) => {
-          if (error) reject(error);
-          else resolve(result);
-        }
-      );
-      uploadStream.end(buffer);
-    });
+    // Use our new reusable utility function
+    const url = await uploadImage(buffer, file.name);
 
-    return NextResponse.json({ url: uploadResponse.secure_url }, { status: 200 });
+    return NextResponse.json({ url }, { status: 200 });
   } catch (error) {
-    console.error("Upload error:", error);
-    return NextResponse.json({ error: "Failed to upload file" }, { status: 500 });
+    console.error("Upload API error:", error);
+    return NextResponse.json({ error: "Failed to upload file: " + (error.message || String(error)) }, { status: 500 });
   }
 }
+
