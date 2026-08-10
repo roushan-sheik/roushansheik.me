@@ -39,7 +39,7 @@ export default function ProjectsPage() {
     <div className="min-h-screen pb-20">
       <div className="project_container mt-12">
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+        <div className="flex flex-col gap-6 mb-10">
           <div className="flex items-center gap-3">
             <h1 className="text-4xl font-black text-gray-900 tracking-tight uppercase">
               Projects
@@ -49,7 +49,7 @@ export default function ProjectsPage() {
             </div>
           </div>
 
-          <div className="flex items-center justify-between md:justify-end gap-6 w-full md:w-auto">
+          <div className="flex items-center justify-between w-full">
             {/* Sort Dropdown */}
             <div className="flex items-center gap-2">
               <span className="text-sm text-gray-500 font-medium">Sort by:</span>
