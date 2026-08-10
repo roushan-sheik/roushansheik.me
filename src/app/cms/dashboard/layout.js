@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Zap, LayoutDashboard, Home, Newspaper, Globe, FolderDot, BookOpen } from "lucide-react";
+import { Zap, LayoutDashboard, Home, Newspaper, Globe, FolderDot, BookOpen, Users } from "lucide-react";
 import LogoutButton from "./LogoutButton";
 
 export default function DashboardLayout({ children }) {
@@ -44,6 +44,9 @@ export default function DashboardLayout({ children }) {
             </Link>
             <Link href="/cms/dashboard/publications" className={getLinkClass("/cms/dashboard/publications")}>
               <BookOpen className="w-4 h-4" /> Publications
+            </Link>
+            <Link href="/cms/dashboard/subscribers" className={getLinkClass("/cms/dashboard/subscribers")}>
+              <Users className="w-4 h-4" /> Messages
             </Link>
           </nav>
         </div>

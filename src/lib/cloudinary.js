@@ -52,18 +52,18 @@ export async function uploadImage(buffer, fileName, folder = "portfolio") {
     return uploadResponse.secure_url;
   } catch (cloudError) {
     console.warn("Cloudinary upload failed, falling back to local storage:", cloudError.message);
-    
+
     // 2. Fallback to Local Storage
     const uploadDir = path.join(process.cwd(), "public", "uploads");
     try {
       await mkdir(uploadDir, { recursive: true });
-    } catch (err) {} // Ignore if directory already exists
-    
+    } catch (err) { } // Ignore if directory already exists
+
     const safeFileName = `${Date.now()}-${fileName.replace(/\s+/g, '-')}`;
     const filePath = path.join(uploadDir, safeFileName);
-    
+
     await writeFile(filePath, buffer);
-    
+
     return `/uploads/${safeFileName}`;
   }
 }
@@ -94,7 +94,7 @@ export async function deleteImage(imageUrl) {
     // 2. Handle Cloudinary images
     if (imageUrl.includes("cloudinary.com")) {
       configureCloudinary();
-      
+
       if (!process.env.CLOUDINARY_CLOUD_NAME) {
         throw new Error("Cloudinary credentials not loaded.");
       }
@@ -104,16 +104,16 @@ export async function deleteImage(imageUrl) {
       // public_id would be: portfolio/sample
       const urlParts = imageUrl.split("/");
       const uploadIndex = urlParts.findIndex(part => part === "upload");
-      
+
       if (uploadIndex !== -1 && urlParts.length > uploadIndex + 2) {
         // Skip the 'v1234567890' version part (uploadIndex + 1)
         const pathParts = urlParts.slice(uploadIndex + 2);
         const fileNameWithExt = pathParts.pop();
         const fileName = fileNameWithExt.split(".")[0]; // Remove extension
         const folderPath = pathParts.join("/");
-        
+
         const public_id = folderPath ? `${folderPath}/${fileName}` : fileName;
-        
+
         const result = await cloudinary.uploader.destroy(public_id);
         return result.result === "ok";
       }
