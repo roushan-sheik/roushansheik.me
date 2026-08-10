@@ -64,7 +64,7 @@ export default function PublicationsList() {
       <div className="bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 overflow-hidden">
         {publications.length === 0 ? (
           <div className="p-12 text-center text-gray-500">
-            No publications found. Click "Add Publication" to start!
+            No publications found. Click &quot;New Publication&quot; to add one!
           </div>
         ) : (
           <div className="overflow-x-auto">
