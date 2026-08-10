@@ -22,7 +22,7 @@ export default function DashboardLayout({ children }) {
   return (
     <div className="min-h-screen flex bg-gray-50 text-black">
       {/* Sidebar */}
-      <aside className="w-64 bg-white border-r border-gray-100 flex flex-col justify-between h-[calc(100vh-100px)] sticky top-[80px]">
+      <aside className="w-64 bg-white border-r border-gray-100 flex flex-col justify-between fixed top-[80px] h-[calc(100vh-80px)] overflow-y-auto z-40">
         <div>
           <div className="px-6 py-8 border-b border-gray-50">
             <h2 className="text-xl font-black text-gray-900 tracking-tight flex items-center gap-2">
@@ -60,7 +60,7 @@ export default function DashboardLayout({ children }) {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8">
+      <main className="flex-1 p-8 ml-64">
         <div className="max-w-4xl mx-auto">
           {children}
         </div>

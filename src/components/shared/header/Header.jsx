@@ -2,7 +2,7 @@ import { navData } from "@/constants/nav";
 import Link from "next/link";
 const Header = () => {
   return (
-    <div className="flex flex-row items-center justify-between sm:justify-start sm:space-x-8 py-6">
+    <div className="flex flex-row items-center justify-between sm:justify-start sm:space-x-8 py-6 sticky top-0 z-50 bg-white">
       <div>
         <Link href="/">
           <h3 className="cursor-pointer font-bold text-black text-[18px] tracking-widest hover:text-brand-hover transition-colors duration-200">
