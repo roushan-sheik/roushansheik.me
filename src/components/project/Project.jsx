@@ -19,16 +19,29 @@ const Project = ({ project }) => {
   return (
     <div className="flex flex-col bg-white rounded-xl border border-gray-200 overflow-hidden transition-all hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
       {/* Thumbnail */}
-      <div className="w-full h-48 relative bg-gray-900 border-b border-gray-100 overflow-hidden">
-        {thumbnailUrl && (
-          <Image
-            src={thumbnailUrl}
-            alt={title}
-            fill
-            className="object-cover transition-transform duration-500 hover:scale-105"
-          />
-        )}
-      </div>
+      {demoUrl ? (
+        <a href={demoUrl} target="_blank" rel="noopener noreferrer" className="block w-full h-48 relative bg-gray-900 border-b border-gray-100 overflow-hidden">
+          {thumbnailUrl && (
+            <Image
+              src={thumbnailUrl}
+              alt={title}
+              fill
+              className="object-cover transition-transform duration-500 hover:scale-105"
+            />
+          )}
+        </a>
+      ) : (
+        <div className="w-full h-48 relative bg-gray-900 border-b border-gray-100 overflow-hidden">
+          {thumbnailUrl && (
+            <Image
+              src={thumbnailUrl}
+              alt={title}
+              fill
+              className="object-cover transition-transform duration-500 hover:scale-105"
+            />
+          )}
+        </div>
+      )}
 
       {/* Content */}
       <div className="p-6 flex flex-col flex-1">
