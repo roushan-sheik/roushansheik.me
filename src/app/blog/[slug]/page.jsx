@@ -137,7 +137,7 @@ export default function BlogDetailsPage() {
           margin: 3rem auto;
           border: 1px solid #f3f4f6;
           max-width: 100%;
-          width: 100%; /* Force image to expand to fill the content width nicely */
+          width: 85%; /* Slightly decreased size so it doesn't feel overwhelming */
           height: auto;
           display: block;
           box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
