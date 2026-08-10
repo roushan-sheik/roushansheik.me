@@ -118,7 +118,7 @@ export default function HomeEditor() {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 space-y-8 transition-all hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
+      <form onSubmit={handleSubmit} className="bg-white p-4 sm:p-6 md:p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 space-y-8 transition-all hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
         
         <div className="border-b border-gray-100 pb-8">
           <h3 className="text-lg font-semibold text-gray-800 mb-6">Profile Image</h3>
