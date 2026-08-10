@@ -85,8 +85,8 @@ export default function Home() {
             </h4>
 
             {/* Social links  */}
-            <div className="flex items-center gap-4">
-              <div className="flex gap-4">
+            <div className="flex flex-wrap justify-center sm:justify-start items-center gap-2 sm:gap-4 w-full">
+              <div className="flex flex-wrap justify-center sm:justify-start gap-4">
                 {showSocial
                   ? socialLinks?.map((social) => {
                     return (

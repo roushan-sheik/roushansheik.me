@@ -8,7 +8,15 @@ import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 
 // Dynamically import ReactQuill to avoid SSR issues
-const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+const ReactQuill = dynamic(
+  async () => {
+    const { default: RQ } = await import("react-quill");
+    return function Comp({ forwardedRef, ...props }) {
+      return <RQ ref={forwardedRef} {...props} />;
+    };
+  },
+  { ssr: false }
+);
 
 export default function BlogForm() {
   const params = useParams();
@@ -72,10 +80,12 @@ export default function BlogForm() {
           if (data.url) {
             // Get Quill instance
             const quill = quillRef.current.getEditor();
-            const range = quill.getSelection(true);
+            let range = quill.getSelection(true);
+            let index = range ? range.index : quill.getLength();
+            
             // Insert image URL
-            quill.insertEmbed(range.index, "image", data.url);
-            quill.setSelection(range.index + 1);
+            quill.insertEmbed(index, "image", data.url);
+            quill.setSelection(index + 1);
           }
         } catch (error) {
           console.error("Image upload failed:", error);
@@ -288,7 +298,7 @@ export default function BlogForm() {
           <h3 className="text-lg font-semibold text-gray-800 mb-6">Blog Content</h3>
           <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
             <ReactQuill
-              ref={quillRef}
+              forwardedRef={quillRef}
               theme="snow"
               modules={modules}
               value={formData.content}

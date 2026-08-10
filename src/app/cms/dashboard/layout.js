@@ -2,11 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Zap, LayoutDashboard, Home, Newspaper, Globe, FolderDot, BookOpen } from "lucide-react";
+import { Zap, LayoutDashboard, Home, Newspaper, Globe, FolderDot, BookOpen, Users, Menu, X } from "lucide-react";
 import LogoutButton from "./LogoutButton";
+import { useState, useEffect } from "react";
 
 export default function DashboardLayout({ children }) {
   const pathname = usePathname();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // Close sidebar on route change
+  useEffect(() => {
+    setIsSidebarOpen(false);
+  }, [pathname]);
 
   const getLinkClass = (path) => {
     // For the root dashboard overview, it must be an exact match
@@ -21,8 +28,16 @@ export default function DashboardLayout({ children }) {
 
   return (
     <div className="min-h-screen flex bg-gray-50 text-black">
+      {/* Mobile Overlay */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 md:hidden top-[80px]"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
-      <aside className="w-64 bg-white border-r border-gray-100 flex flex-col justify-between h-[calc(100vh-100px)] sticky top-[80px]">
+      <aside className={`w-64 bg-white border-r border-gray-100 flex flex-col justify-between fixed top-[80px] left-0 md:left-auto h-[calc(100vh-80px)] overflow-y-auto z-50 transition-transform duration-300 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
         <div>
           <div className="px-6 py-8 border-b border-gray-50">
             <h2 className="text-xl font-black text-gray-900 tracking-tight flex items-center gap-2">
@@ -45,6 +60,9 @@ export default function DashboardLayout({ children }) {
             <Link href="/cms/dashboard/publications" className={getLinkClass("/cms/dashboard/publications")}>
               <BookOpen className="w-4 h-4" /> Publications
             </Link>
+            <Link href="/cms/dashboard/subscribers" className={getLinkClass("/cms/dashboard/subscribers")}>
+              <Users className="w-4 h-4" /> Messages
+            </Link>
           </nav>
         </div>
         
@@ -57,7 +75,13 @@ export default function DashboardLayout({ children }) {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 p-8">
+      <main className="flex-1 p-4 md:p-8 md:ml-64 w-full overflow-x-hidden">
+        <div className="md:hidden mb-6 flex items-center">
+          <button onClick={() => setIsSidebarOpen(true)} className="p-2 bg-white rounded-lg shadow-sm border border-gray-200 text-gray-700 hover:bg-gray-50">
+            <Menu className="w-5 h-5" />
+          </button>
+          <span className="ml-3 font-bold text-gray-800 tracking-tight">Dashboard Menu</span>
+        </div>
         <div className="max-w-4xl mx-auto">
           {children}
         </div>
