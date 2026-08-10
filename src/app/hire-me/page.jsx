@@ -60,7 +60,7 @@ export default function HireMePage() {
             <p className="mb-2 text-blue-600 font-bold">$ ./contract.sh</p>
             <p className="text-gray-600">Initializing hiring module...</p>
             <p className="text-gray-600 mb-4 animate-pulse">_</p>
-            <p className="text-gray-600 text-sm">I'm currently available for new projects and full-time opportunities. Provide your details below to establish a secure connection.</p>
+            <p className="text-gray-600 text-sm">I&apos;m currently available for new projects and full-time opportunities. Provide your details below to establish a secure connection.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
