@@ -62,7 +62,11 @@ export default function LoginPage() {
         {/* Terminal Header */}
         <div className="bg-[#2d2d2d] px-4 py-3 flex items-center justify-between border-b border-black/50 select-none">
           <div className="flex space-x-2 w-20">
-            <div className="w-3 h-3 rounded-full bg-[#ff5f56] shadow-sm"></div>
+            <button 
+              onClick={() => router.push('/')}
+              className="w-3 h-3 rounded-full bg-[#ff5f56] shadow-sm hover:bg-red-500 transition-colors focus:outline-none cursor-pointer"
+              title="Close"
+            ></button>
             <div className="w-3 h-3 rounded-full bg-[#ffbd2e] shadow-sm"></div>
             <div className="w-3 h-3 rounded-full bg-[#27c93f] shadow-sm"></div>
           </div>
