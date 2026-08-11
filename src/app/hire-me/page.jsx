@@ -2,12 +2,14 @@
 
 import React, { useState } from "react";
 import { Mail, MessageSquare } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function HireMePage() {
   const [email, setEmail] = useState("");
   const [userMessage, setUserMessage] = useState("");
   const [status, setStatus] = useState("idle"); // idle, loading, success, error
   const [message, setMessage] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,7 +47,11 @@ export default function HireMePage() {
       <div className="max-w-2xl w-full bg-white rounded-xl shadow-2xl overflow-hidden font-mono border border-gray-200">
         {/* Terminal Header */}
         <div className="bg-gray-100 px-4 py-3 flex items-center gap-2 border-b border-gray-200">
-          <div className="w-3 h-3 rounded-full bg-red-400"></div>
+          <button 
+            onClick={() => router.push('/')}
+            className="w-3 h-3 rounded-full bg-red-400 hover:bg-red-500 transition-colors focus:outline-none cursor-pointer"
+            title="Close"
+          ></button>
           <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
           <div className="w-3 h-3 rounded-full bg-green-400"></div>
           <div className="flex-1 text-center text-xs text-gray-500 select-none font-sans tracking-wide">

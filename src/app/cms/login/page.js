@@ -1,15 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Eye, EyeOff } from "lucide-react";
+import { Terminal } from "lucide-react";
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [cursorBlink, setCursorBlink] = useState(true);
   const router = useRouter();
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCursorBlink((prev) => !prev);
+    }, 500);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,81 +34,129 @@ export default function LoginPage() {
         router.push("/cms/dashboard");
       } else {
         const data = await res.json();
-        setError(data.error || "Login failed");
+        setError(data.error || "Authentication failed");
       }
     } catch (err) {
-      setError("An unexpected error occurred");
+      setError("Connection to auth server failed");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100">
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-12 h-12 bg-gray-900 text-white rounded-xl mb-4 shadow-md">
-            ⚡
+    <>
+      <style>{`
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px #1e1e1e inset !important;
+            -webkit-text-fill-color: #f3f4f6 !important;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+      `}</style>
+      <div className="min-h-[calc(100vh-80px)] flex items-center justify-center bg-gray-50 p-6 font-mono">
+        <div className="w-full max-w-2xl bg-[#1e1e1e] rounded-xl shadow-2xl overflow-hidden border border-gray-800/60">
+
+        
+        {/* Terminal Header */}
+        <div className="bg-[#2d2d2d] px-4 py-3 flex items-center justify-between border-b border-black/50 select-none">
+          <div className="flex space-x-2 w-20">
+            <button 
+              onClick={() => router.push('/')}
+              className="w-3 h-3 rounded-full bg-[#ff5f56] shadow-sm hover:bg-red-500 transition-colors focus:outline-none cursor-pointer"
+              title="Close"
+            ></button>
+            <div className="w-3 h-3 rounded-full bg-[#ffbd2e] shadow-sm"></div>
+            <div className="w-3 h-3 rounded-full bg-[#27c93f] shadow-sm"></div>
           </div>
-          <h1 className="text-2xl font-black text-gray-900 tracking-tight">Admin Login</h1>
-          <p className="text-gray-500 text-sm mt-2">Sign in to manage your portfolio</p>
+          <div className="text-gray-400 text-xs font-semibold tracking-wider flex items-center gap-2">
+            <Terminal className="w-4 h-4" />
+            <span>admin@portfolio:~</span>
+          </div>
+          <div className="w-20"></div> {/* Spacer for perfect centering */}
         </div>
 
-        {error && (
-          <div className="mb-6 p-4 rounded-xl bg-red-50 border border-red-100 text-red-600 text-sm font-medium flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-red-500"></span>
-            {error}
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Email Address</label>
-            <input
-              type="email"
-              required
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full px-4 py-3 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 outline-none"
-              placeholder="admin@example.com"
-            />
+        {/* Terminal Body */}
+        <div className="p-8 text-gray-300 relative bg-[#1e1e1e]">
+          <div className="mb-8">
+            <p className="text-blue-400 font-semibold mb-1">Portfolio OS v2.0.4 (GNU/Linux)</p>
+            <p className="text-gray-500 text-sm">System ready. Please provide credentials to mount admin volume.</p>
           </div>
 
-          <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-2">Password</label>
-            <div className="relative">
-              <input
-                type={showPassword ? "text" : "password"}
-                required
-                value={formData.password}
-                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="w-full px-4 py-3 pr-12 bg-gray-50 border border-transparent rounded-xl focus:bg-white focus:ring-2 focus:ring-gray-900 focus:border-transparent transition-all duration-200 outline-none"
-                placeholder="••••••••"
-              />
+          {error && (
+            <div className="mb-6 text-red-400 flex items-start gap-2 bg-red-400/10 p-3 rounded border border-red-400/20">
+              <span className="font-bold">Error:</span>
+              <span>{error}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2">
+              <label className="block text-sm">
+                <span className="text-emerald-400 font-bold">admin@portfolio</span>
+                <span className="text-gray-400">:</span>
+                <span className="text-blue-400 font-bold">~</span>
+                <span className="text-gray-400">$ </span>
+                <span className="text-gray-300">prompt email</span>
+              </label>
+              <div className="flex items-center">
+                <span className="mr-2 text-gray-500">{">"}</span>
+                <input
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full bg-transparent border-none focus:ring-0 text-gray-100 placeholder-gray-600 outline-none caret-gray-100 pl-0"
+                  placeholder="admin@example.com"
+                  spellCheck="false"
+                  autoComplete="off"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <label className="block text-sm">
+                <span className="text-emerald-400 font-bold">admin@portfolio</span>
+                <span className="text-gray-400">:</span>
+                <span className="text-blue-400 font-bold">~</span>
+                <span className="text-gray-400">$ </span>
+                <span className="text-gray-300">prompt password</span>
+              </label>
+              <div className="flex items-center">
+                <span className="mr-2 text-gray-500">{">"}</span>
+                <input
+                  type="password"
+                  required
+                  value={formData.password}
+                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  className="w-full bg-transparent border-none focus:ring-0 text-gray-100 placeholder-gray-600 outline-none caret-gray-100 pl-0"
+                  placeholder="••••••••"
+                />
+              </div>
+            </div>
+
+            <div className="pt-6">
               <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute inset-y-0 right-0 px-3 flex items-center text-gray-500 hover:text-gray-700 transition-colors"
+                type="submit"
+                disabled={loading}
+                className="group flex items-center text-gray-300 hover:text-white transition-colors disabled:opacity-50 w-full text-left outline-none cursor-pointer"
               >
-                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                <span className="text-emerald-400 font-bold mr-2">admin@portfolio:~$</span> 
+                <span>./authenticate.sh</span>
+                {loading && <span className="ml-3 text-yellow-400 text-sm">Running...</span>}
+                <span className={`inline-block w-2.5 h-5 bg-gray-400 ml-2 align-middle ${cursorBlink ? 'opacity-100' : 'opacity-0'}`}></span>
               </button>
             </div>
+          </form>
+          
+          <div className="mt-12 pt-6 border-t border-gray-800 text-xs text-gray-500 flex justify-between">
+            <span>Server: Online</span>
+            <span>Port: 443</span>
           </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full py-3 bg-gray-900 text-white font-semibold rounded-xl shadow-md hover:bg-black hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-70 disabled:hover:translate-y-0 flex items-center justify-center gap-2"
-          >
-            {loading ? (
-              <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-            ) : "Sign In"}
-          </button>
-        </form>
+        </div>
       </div>
     </div>
+    </>
   );
 }
