@@ -3,6 +3,8 @@ import Profile from "@/models/Profile";
 import { NextResponse } from "next/server";
 import { profile as defaultProfile, description as defaultDescription } from "@/data/profile";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     await connectToDatabase();
